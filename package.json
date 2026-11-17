@@ -1,0 +1,26 @@
+{
+  "name": "mdkaif-marketing-portfolio",
+  "version": "1.0.0",
+  "description": "Executive Portfolio for MD Kaif - Marketing Executive, SEO Specialist & D2C Growth Strategist",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "serve": "npx serve ."
+  },
+  "keywords": [
+    "portfolio",
+    "digital-marketing",
+    "seo",
+    "growth-marketing",
+    "md-kaif",
+    "d2c-growth"
+  ],
+  "author": "MD Kaif <raunaquekaif@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.4.10"
+  }
+}
+

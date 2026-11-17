@@ -1,0 +1,509 @@
+/* ========================================================
+   MD KAIF - PORTFOLIO STYLESHEET
+   Aesthetic: Luxury Editorial Serif + High-Tech Growth Marketer
+   Theme: Dark Obsidian (Default) & Clean Editorial Paper (Light)
+   ======================================================== */
+
+:root {
+  /* Color Tokens - Dark Mode (Default) */
+  --bg-surface: #0a0d14;
+  --bg-surface-card: #111622;
+  --bg-surface-alt: #161c2c;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-highlight: rgba(16, 185, 129, 0.3);
+  
+  --text-foreground: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  
+  --accent-emerald: #10b981;
+  --accent-emerald-glow: rgba(16, 185, 129, 0.25);
+  --accent-cyan: #38bdf8;
+  --accent-cyan-glow: rgba(56, 189, 248, 0.2);
+  --accent-purple: #c084fc;
+  --accent-pink: #f472b6;
+  
+  --font-serif: "Cinzel", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+}
+
+/* Light Theme Variables */
+[data-theme="light"] {
+  --bg-surface: #fafaf9;
+  --bg-surface-card: #ffffff;
+  --bg-surface-alt: #f4f4f5;
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-highlight: rgba(16, 185, 129, 0.4);
+  
+  --text-foreground: #09090b;
+  --text-muted: #52525b;
+  --text-dim: #71717a;
+  
+  --accent-emerald: #059669;
+  --accent-emerald-glow: rgba(5, 150, 105, 0.15);
+  --accent-cyan: #0284c7;
+  --accent-cyan-glow: rgba(2, 132, 199, 0.15);
+  --accent-purple: #7c3aed;
+  --accent-pink: #db2777;
+}
+
+/* Base Elements */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  background-color: var(--bg-surface);
+  color: var(--text-foreground);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Utility Font & Colors */
+.font-serif { font-family: var(--font-serif); }
+.font-sans { font-family: var(--font-sans); }
+.font-mono { font-family: var(--font-mono); }
+
+.bg-surface { background-color: var(--bg-surface); }
+.bg-surface-card { background-color: var(--bg-surface-card); }
+.bg-surface-alt { background-color: var(--bg-surface-alt); }
+.border-border { border-color: var(--border-color); }
+.text-foreground { color: var(--text-foreground); }
+.text-muted { color: var(--text-muted); }
+
+/* Ambient Lighting & Grids */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.35;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.glow-orb-1 {
+  width: 550px;
+  height: 550px;
+  top: -100px;
+  left: 20%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.35), transparent 70%);
+  animation: floatOrb 18s ease-in-out infinite alternate;
+}
+
+.glow-orb-2 {
+  width: 600px;
+  height: 600px;
+  top: 35%;
+  right: -100px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.25), transparent 70%);
+  animation: floatOrb 22s ease-in-out infinite alternate-reverse;
+}
+
+.glow-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, var(--border-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-color) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(circle at 50% 25%, black 40%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at 50% 25%, black 40%, transparent 80%);
+  opacity: 0.5;
+}
+
+@keyframes floatOrb {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, 30px) scale(1.08); }
+  100% { transform: translate(-30px, 50px) scale(0.95); }
+}
+
+/* Section Tags */
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--accent-emerald);
+  border: 1px solid var(--border-highlight);
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #04130c;
+  background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  box-shadow: 0 4px 14px var(--accent-emerald-glow);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4);
+  background: linear-gradient(135deg, #4ade80 0%, #059669 100%);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.3rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--text-foreground);
+  background: var(--bg-surface-card);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent-emerald);
+  background: var(--bg-surface-alt);
+  transform: translateY(-1.5px);
+}
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.75rem;
+  background: var(--bg-surface-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-foreground);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-icon:hover {
+  border-color: var(--accent-emerald);
+  transform: translateY(-1.5px);
+}
+
+/* Nav Links */
+.nav-link {
+  padding: 0.5rem 0.95rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--text-foreground);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.mobile-nav-link {
+  display: block;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  color: var(--text-foreground);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.mobile-nav-link:hover {
+  background: var(--bg-surface-alt);
+  color: var(--accent-emerald);
+}
+
+/* Metric Cards */
+.metric-card {
+  padding: 1.15rem;
+  background: rgba(10, 13, 20, 0.6);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  position: relative;
+  overflow: hidden;
+  backdrop-blur: 10px;
+}
+
+[data-theme="light"] .metric-card {
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+/* Project Cards */
+.project-card {
+  background: var(--bg-surface-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.project-card:hover {
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.4);
+  transform: translateY(-3px);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  background: var(--bg-surface-alt);
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+}
+
+.project-filter-btn {
+  padding: 0.45rem 1.15rem;
+  border-radius: 9999px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  background: var(--bg-surface-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.project-filter-btn.active, .project-filter-btn:hover {
+  background: var(--accent-emerald);
+  color: #04130c;
+  border-color: var(--accent-emerald);
+  font-weight: 700;
+}
+
+/* Skill Categories */
+.skill-category-card {
+  background: var(--bg-surface-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease;
+}
+
+.skill-category-card:hover {
+  border-color: var(--border-highlight);
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+}
+
+.skill-pill {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px;
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--accent-emerald);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  font-weight: 600;
+}
+
+/* Certifications Cards */
+.cert-card {
+  background: var(--bg-surface-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cert-card:hover {
+  border-color: var(--accent-emerald);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px -10px rgba(0, 0, 0, 0.4);
+}
+
+/* Form Styles */
+.form-input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-foreground);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus {
+  border-color: var(--accent-emerald);
+  box-shadow: 0 0 0 3px var(--accent-emerald-glow);
+}
+
+/* Interactive Sliders */
+.range-slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--bg-surface-alt);
+  outline: none;
+  accent-color: var(--accent-emerald);
+  cursor: pointer;
+}
+
+/* SEO Checkbox Card Item */
+.seo-check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.seo-check-item:hover {
+  border-color: var(--border-highlight);
+}
+
+.seo-checkbox {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: 0.15rem;
+  accent-color: var(--accent-emerald);
+  cursor: pointer;
+}
+
+/* Copy Trigger Utility */
+.copy-trigger {
+  cursor: pointer;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* ========================================================
+   PRINT STYLESHEET (WINDOW.PRINT RESUME REPLICA)
+   Ensures clicking "Print / Save PDF" produces a pristine,
+   authoritative 1-page document matching the exact PDF resume!
+   ======================================================== */
+@media print {
+  /* Hide all main interactive website elements */
+  body {
+    background: white !important;
+    color: black !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  header, footer, main, .glow-orb, .glow-grid, #mobileMenu,
+  .btn-icon, #printResumeBtn, #closeResumeModalBtn,
+  .bg-slate-900.text-white.px-6 {
+    display: none !important;
+  }
+
+  /* Force display of the modal and unroll its inner resume container */
+  #resumeModal {
+    display: block !important;
+    position: static !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  #resumeModal > div {
+    max-width: 100% !important;
+    max-height: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+  }
+
+  #printableResume {
+    padding: 0.25in 0.35in !important;
+    font-size: 11pt !important;
+    line-height: 1.35 !important;
+    color: #000000 !important;
+    background: #ffffff !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  #printableResume h1 {
+    font-size: 20pt !important;
+    margin-bottom: 4pt !important;
+  }
+
+  #printableResume h2 {
+    font-size: 10pt !important;
+    margin-top: 10pt !important;
+    margin-bottom: 4pt !important;
+    border-bottom: 1px solid #000000 !important;
+  }
+
+  #printableResume p, #printableResume li {
+    font-size: 9.5pt !important;
+    line-height: 1.35 !important;
+    color: #111111 !important;
+  }
+
+  @page {
+    margin: 0.4in;
+    size: A4 portrait;
+  }
+}
+
